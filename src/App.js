@@ -1,35 +1,44 @@
-import './App.css'
-import Card from './components/Card/Card'
-import Cards from './components/Cards/Cards'
-import SearchBar from './components/SearchBar.jsx'
-import characters, { Rick } from './data.js'
+import "./App.css";
+import Cards from "./components/Cards/Cards";
+import Nav from "./components/Nav";
+import { useState } from "react";
+import { Routes, Route } from "react-router-dom";
+import About from "./components/About";
+import Detail from "./components/Detail";
 
-function App () {
+function App() {
+  const [characters, setCharacters] = useState([]);
+
+  const onSearch = (character) => {
+    fetch(`https://rickandmortyapi.com/api/character/${character}`)
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.name) {
+          setCharacters((oldChars) => [...oldChars, data]);
+        } else {
+          window.alert("No hay personajes con ese ID");
+        }
+      });
+  };
+
+  const onClose = (id) => {
+    setCharacters([characters.filter((character) => character.id !== id)]);
+  };
+
   return (
-    <div className='App' style={{ padding: '25px' }}>
-      <div>
-        <Card 
-          name={Rick.name}
-          species={Rick.species}
-          gender={Rick.gender}
-          image={Rick.image}
-          onClose={() => window.alert('Emulamos que se cierra la card')}
+    <div className="App" style={{ padding: "25px" }}>
+      <Nav onSearch={onSearch} />
+      <Routes>
+        <Route
+          path="/home"
+          element={<Cards onClose={onClose} characters={characters} />}
         />
-      </div>
+        <Route path="about" element={<About />} />
+        <Route path="detail/:detailId" element={<Detail/>}/>
+      </Routes>
       <hr />
-      <div>
-        <Cards
-          characters={characters}
-        />
-      </div>
-      <hr />
-      <div>
-        <SearchBar
-          onSearch={(characterID) => window.alert(characterID)}
-        />
-      </div>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
