@@ -1,10 +1,10 @@
 import "./App.css";
 import Cards from "./components/Cards/Cards";
-import Nav from "./components/Nav";
+import Nav from "./components/Nav/Nav";
 import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
-import About from "./components/About";
-import Detail from "./components/Detail";
+import About from "./components/About/About";
+import Detail from "./components/Detail/Detail";
 
 function App() {
   const [characters, setCharacters] = useState([]);
