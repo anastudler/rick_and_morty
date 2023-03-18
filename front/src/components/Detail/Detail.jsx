@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
+// import styles from '../Detail/Detail.module.css'
 
 const Detail = () => {
   const { detailId } = useParams();

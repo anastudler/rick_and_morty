@@ -1,0 +1,19 @@
+.card{
+    width: fit-content;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    background-color: #BED7B1;
+    color: black;
+    border-radius: 2rem;
+    box-shadow: 0 0 1rem black;
+}
+
+.buttonContainer{
+    display: flex;
+    justify-content: end;
+}
+
+.buttonContainer button{
+    background-color: #5F4025 ;
+    color: white;
+}
