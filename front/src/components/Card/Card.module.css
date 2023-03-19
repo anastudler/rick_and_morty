@@ -1,19 +1,23 @@
 .card{
     width: fit-content;
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding: 1rem;    
     background-color: #BED7B1;
     color: black;
     border-radius: 2rem;
-    box-shadow: 0 0 1rem black;
-}
-
-.buttonContainer{
+    box-shadow: 10px 10px 5px 0px black;
     display: flex;
-    justify-content: end;
+    flex-direction: column;
 }
 
-.buttonContainer button{
-    background-color: #5F4025 ;
-    color: white;
+.closeButton{
+    border: 0px;
+    background-color: #8b8bb1;
+    width: fit-content;
+    height: fit-content;
+    border-radius: 15px;
+    transition: 0.5s;
+}
+
+.closeButton:hover{
+    background-color: blanchedalmond;
 }

@@ -22,7 +22,7 @@ function App() {
   };
 
   const onClose = (id) => {
-    setCharacters([characters.filter((character) => character.id !== id)]);
+    setCharacters(characters.filter((character) => character.id !== id));
   };
 
   return (
@@ -34,7 +34,7 @@ function App() {
           element={<Cards onClose={onClose} characters={characters} />}
         />
         <Route path="about" element={<About />} />
-        <Route path="detail/:detailId" element={<Detail/>}/>
+        <Route path="detail/:detailId" element={<Detail />} />
       </Routes>
       <hr />
     </div>

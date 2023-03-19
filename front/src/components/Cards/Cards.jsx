@@ -12,8 +12,8 @@ export default function Cards({ characters, onClose }) {
             species={species}
             gender={gender}
             image={image}
-            onClose={() => onClose(id)}
             id={id}
+            onClose={() => onClose(id)}
           />
         );
       })}

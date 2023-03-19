@@ -4,9 +4,7 @@ import { Link } from "react-router-dom";
  function Card({ name, species, gender, image, onClose, id }) {
   return (
     <div className={styles.card}>
-      <div className={styles.buttonContainer}>
-      <button onClick={onClose} >X</button>
-      </div >
+      <button onClick={onClose} className={styles.closeButton} >X</button>
       <Link to={`/detail/${id}`}>
       <h2>{name}</h2>
       </Link>
