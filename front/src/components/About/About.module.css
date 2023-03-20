@@ -1,3 +1,5 @@
 .about{
-    color: black
+    color: blanchedalmond;
+    display: flex;
+    flex-direction: column;
 }
