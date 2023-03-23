@@ -1,0 +1,10 @@
+.card{
+    width: fit-content;
+    padding: 1rem;    
+    background-color: #BED7B1;
+    color: black;
+    border-radius: 2rem;
+    box-shadow: 10px 10px 5px 0px black;
+    display: flex;
+    flex-direction: column;
+}

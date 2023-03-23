@@ -1,7 +1,8 @@
 import { useState } from "react";
-import validation from "./validation";
+import validation from "../Form/validation";
+import style from "../Form/Form.module.css";
 
-const Form = () => {
+const Form = ({ login }) => {
   const [userData, setUserData] = useState({
     username: "",
     password: "",
@@ -25,8 +26,13 @@ const Form = () => {
     );
   };
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    login(userData);
+  }
+
   return (
-    <form>
+    <form onSubmit={handleSubmit} className={style.form}>
       <label htmlFor="username">Username: </label>
       <input
         type="text"
@@ -35,6 +41,7 @@ const Form = () => {
         onChange={handleInputChange}
       />
       {errors.username && <p style={{ color: "red" }}>{errors.username}</p>}
+
       <label htmlFor="password">Password: </label>
       <input
         type="password"
@@ -42,6 +49,7 @@ const Form = () => {
         value={userData.password}
         onChange={handleInputChange}
       />
+      {errors.password && <p style={{ color: "red" }}>{errors.password}</p>}
 
       <button>LOGIN</button>
     </form>
