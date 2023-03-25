@@ -14,14 +14,14 @@ function App() {
   const [characters, setCharacters] = useState([]);
   const [access, setAccess] = useState(false);
 
-  const username = "anistudler@gmail.com";
-  const password = "123asd";
+  // const username = "anistudler@gmail.com";
+  // const password = "123asd";
 
   const login = (userData) => {
-    if (userData.username === username && userData.password === password) {
+    // if (userData.username === username && userData.password === password) {
       setAccess(true);
       navigate("/home");
-    }
+    // }
   };
 
   useEffect(() => {
@@ -29,7 +29,7 @@ function App() {
   }, [access, navigate]);
 
   const onSearch = (character) => {
-    fetch(`http://localhost:3001/rickandmorty/character/${character}`)
+    fetch(`http://localhost:3001/rickandmorty/onsearch/${character}`)
       .then((response) => response.json())
       .then((data) => {
         if (data.name) {
