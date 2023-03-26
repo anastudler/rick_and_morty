@@ -1,8 +1,15 @@
-import { ADD_FAVORITE, DELETE_FAVORITE, FILTER, ORDER } from "./action-types";
+import {
+  ADD_FAVORITE,
+  DELETE_FAVORITE,
+  GET_FAVS,
+  FILTER,
+  ORDER,
+} from "./action-types";
 
 const initialState = {
   myFavorites: [],
   allCharacters: [],
+  errors: {},
 };
 
 const reducer = (state = initialState, action) => {
@@ -10,16 +17,24 @@ const reducer = (state = initialState, action) => {
     case ADD_FAVORITE:
       return {
         ...state,
-        myFavorites: [...state.allCharacters, action.payload],
-        allCharacters: [...state.myFavorites],
+        myFavorites: action.payload,
+        allCharacters: action.payload,
+        errors: {},
       };
     case DELETE_FAVORITE:
       return {
         ...state,
-        myFavorites: state.myFavorites.filter(
-          (char) => char.id !== action.payload
-        ),
+        myFavorites: action.payload,
+        errors: {},
       };
+    case GET_FAVS: {
+      return {
+        ...state,
+        myFavorites: action.payload,
+        allCharacters: action.payload,
+        errors: {},
+      };
+    }
     case FILTER:
       const { allCharacters } = state;
       const allCharsFiltered = allCharacters.filter(
@@ -35,8 +50,14 @@ const reducer = (state = initialState, action) => {
         myFavorites:
           action.payload === "Ascendente"
             ? allCharacters.sort((a, b) => a.id < b.id)
-            : allCharacters.sort((a, b) => a.id > b.id)
+            : allCharacters.sort((a, b) => a.id > b.id),
       };
+    case "ERROR": {
+      return {
+        ...state,
+        errors: action.payload,
+      };
+    }
 
     default:
       return { ...state };
